@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import './App.css';
+import { Button, TextField } from "@mui/material";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function App() {
   const [task, setTask] = useState(() => {
@@ -52,11 +54,13 @@ function App() {
       <div class="grid-container">
         <div class="item1">
           {  
-            <input type="text" value={task} placeholder="Enter task here" onChange={(e) => {
-              setTask(e.target.value);
-            }} />
+            <TextField label="Enter task here" focused onChange={(e) => { setTask(e.target.value); }} style={{display:"inline", margin: 10}}  sx={{
+              input: {
+                color: "black",
+                background: "white"
+              }}}/>
           }
-          <button className="btn" onClick={handleAddTask} >Add</button>
+          <Button size="large" variant="contained" onClick={handleAddTask} >Add</Button>
         </div>
 
         <div class="item2">
@@ -65,35 +69,39 @@ function App() {
             if (!item.completed){
               return (
                 <div key={item.id}>
-                  <input type="checkbox" onChange={() => handleCheckChange(item)} checked={item.completed} />
-                  <span style={{textDecoration:'none', padding:'0 10px'}}>{item.label}</span>
-                  <button onClick={() => handleDeleteTask(item)}>Delete</button>
+                  <div className="divItem">
+                    <input className="checkbox-size" type="checkbox" onChange={() => handleCheckChange(item)} checked={item.completed} />
+                    <span>{item.label}</span>
+                  </div>                  
+                  <div className="button-position1">
+                      <Button size="small" variant="contained" onClick={() => handleDeleteTask(item)}><DeleteIcon /></Button>
+                  </div>   
                 </div>
               )
             }           
           })}  
         </div>
+
         <div class="item3">
           <h3>Completed</h3><hr/>
           {taskList.map((item) => {
             if (item.completed){
               return (
                 <div key={item.id}>
-                  <input type="checkbox" onChange={() => handleCheckChange(item)} checked={item.completed} />
-                  <span style={{textDecoration:'line-through', padding:'0 10px'}}>{item.label}</span>
-                  <button onClick={() => handleDeleteTask(item)}>Delete</button>
+                  <div className="divItem">
+                    <input className="checkbox-size" type="checkbox" onChange={() => handleCheckChange(item)} checked={item.completed} />
+                    <span style={{textDecoration:'line-through'}}>{item.label}</span>
+                  </div>   
+                  <div className="button-position1">
+                      <Button size="small" variant="contained" onClick={() => handleDeleteTask(item)}><DeleteIcon /></Button>
+                  </div>                         
                 </div>
               )
             }           
           })}  
         </div>
-      </div>
-     
 
-      <br/><hr/><br/>
-      <h3>Total Task Details</h3>
-      {JSON.stringify(taskList)}
-      <br/><br/><hr/>
+      </div>
     </div>
   );
 }

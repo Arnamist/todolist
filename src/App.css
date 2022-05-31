@@ -12,8 +12,9 @@
 }
 
 .item1 { grid-area: head1; padding: 20px; }
-.item2 { grid-area: left; border: 5px solid white; min-height: 300px}
+.item2 { grid-area: left; border: 5px solid white; min-height: 400px}
 .item3 { grid-area: right; border: 5px solid white;}
+
 .grid-container {
     display: grid;
     grid-template-areas:
@@ -45,24 +46,22 @@ input[type=text] {
     resize: vertical;
 }
 
-.btn {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 15px;
-    margin: 0px 10px;
-    cursor: pointer;
-    border-radius: 12px;
+span{
+    padding: 0 10px;
 }
 
-.logo{
-    float: left;
-    display:block;
-    height: 80px;
-    width: 80px;
-    margin: 20px 20px;
+.divItem{
+    text-align: left; 
+    min-width: 300px;
+    display: inline-block;
+}
+
+.checkbox-size{
+    height: 20px;
+    width: 20px;
+}
+
+.button-position1{
+    text-align: right;
+    display: inline-block;
 }
