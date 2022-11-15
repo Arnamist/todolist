@@ -11,9 +11,9 @@ function App() {
       <Router>
         <HeaderComponent />
         <Routes>
-          <Route exact path='/' element={<ListDisplay />}></Route>
-          <Route path='/react' element={<ListDisplay />}></Route>
-          <Route path='/redux' element={<ReduxListv2 />}></Route>
+          <Route exact path='/todolist/' element={<ListDisplay />}></Route>
+          <Route path='/todolist/react' element={<ListDisplay />}></Route>
+          <Route path='/todolist/redux' element={<ReduxListv2 />}></Route>
         </Routes>
       </Router>      
     </div>
