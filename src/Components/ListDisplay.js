@@ -26,7 +26,6 @@ const ListDisplay = () => {
           important: false
         }]);
         setTask("");
-        document.getElementById('taskInput').innerText="";
     }
     
     function handleCheckChange(item, option){        
@@ -63,13 +62,8 @@ const ListDisplay = () => {
       return (
         <div key={item.id}>
           <div className="divItem">
-            <input className="checkbox-size" type="checkbox" onChange={() => handleCheckChange(item, true)} checked={item.completed} />
-            {
-              (item.completed)?
-              (<span style={{textDecoration:'line-through'}}>{item.label}</span>)
-              :
-              (<span>{item.label}</span>)
-            }  
+            <input className="checkbox-size" type="checkbox" onChange={() => handleCheckChange(item, true)} checked={item.completed} /> 
+            {(item.completed)? (<span style={{textDecoration:'line-through'}}>{item.label}</span>):(<span>{item.label}</span>)} 
           </div>                  
           <div className="button-position1">
             <Button size="small" variant="contained" onClick={() => handleCheckChange(item, false)}>
@@ -83,15 +77,16 @@ const ListDisplay = () => {
     
     return (
         <div className="App">
-          <br/>
           <div class="grid-container">
             <div class="item1">
+            <h3>REACT</h3>
               {  
                 <TextField
                 color="secondary"
                 label="Enter task here" 
                 value={task}
-                onChange={(e) => { setTask(e.target.value); }} style={{display:"inline", paddingTop:15}}  sx={{
+                onChange={(e) => { setTask(e.target.value); }} style={{display:"inline", paddingTop:15}}  
+                sx={{
                   input: {
                     color: "black",
                     background: "white",
